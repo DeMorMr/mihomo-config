@@ -115,7 +115,13 @@ listeners: # <-- Отдельный локальный прокси, для то
     port: 10808
     udp: true
     proxy: DIRECT
-    
+  - name: proxy-forced
+    type: socks
+    listen: 127.0.0.1
+    port: 10809
+    udp: true
+    proxy: PROXY
+
 proxy-groups:
 - name: PROXY
   type: select
