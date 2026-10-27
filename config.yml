@@ -108,14 +108,14 @@ proxy-providers:
       timeout: 5000
       lazy: true
       
-listeners: # <-- Отдельный локальный прокси, для того чтобы торрент ходил мимо !!!! Нужно самостоятельно поставить в настройках 127.0.0.1:10808
-  - name: torrent-direct
+listeners: 
+  - name: torrent-direct # <-- Отдельный локальный прокси, для того чтобы торрент ходил мимо !!!! Нужно самостоятельно поставить в настройках 127.0.0.1:10808
     type: socks
     listen: 127.0.0.1
     port: 10808
     udp: true
     proxy: DIRECT
-  - name: proxy-forced
+  - name: proxy-forced # <-- Принудительно пропускать через ядро
     type: socks
     listen: 127.0.0.1
     port: 10809
