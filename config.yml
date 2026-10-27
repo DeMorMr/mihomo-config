@@ -1,0 +1,197 @@
+# Пс: Создано для друзей, лишние глаза прочь. Хотя кому надо, пользуйтесь на здоровье!
+
+mode: rule
+mixed-port: 7890
+allow-lan: false
+ipv6: false
+log-level: info
+unified-delay: true
+tcp-concurrent: true
+find-process-mode: strict
+profile:
+  store-selected: true
+  store-fake-ip: false
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+  - any:53
+  - tcp://any:53
+dns:
+  enable: true
+  listen: 127.0.0.1:7874
+  ipv6: false
+  use-hosts: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+  - 1.1.1.1
+  - 8.8.8.8
+  nameserver:
+  - https://cloudflare-dns.com/dns-query
+  - https://dns.google/dns-query
+  proxy-server-nameserver:
+  - https://cloudflare-dns.com/dns-query
+  - https://dns.google/dns-query
+  nameserver-policy:
+    +.polaris-iot.com:
+    - 77.88.8.8
+    - 77.88.8.1
+  fake-ip-filter:
+  - '*.lan'
+  - '*.local'
+  - +.home
+  - +.home.arpa
+  - localhost
+  - stun.*
+  - stun.*.*
+  - stun.*.*.*
+  - '*.stun.*'
+  - time.windows.com
+  - time.nist.gov
+  - time.apple.com
+  - time.asia.apple.com
+  - +.pool.ntp.org
+  - ntp.ubuntu.com
+  - time1.apple.com
+  - time2.apple.com
+  - time3.apple.com
+  - time4.apple.com
+  - time5.apple.com
+  - time6.apple.com
+  - time7.apple.com
+  - time1.google.com
+  - time2.google.com
+  - time3.google.com
+  - time4.google.com
+  - api.joox.com
+  - joox.com
+  - '*.xiami.com'
+  - +.msftconnecttest.com
+  - +.msftncsi.com
+  - +.xboxlive.com
+  - '*.*.stun.playstation.net'
+  - xbox.*.*.microsoft.com
+  - '*.ipv6.microsoft.com'
+  - speedtest.cros.wr.pvp.net
+  - +.apple.com
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports:
+      - 80
+      - 8080-8880
+      override-destination: true
+    TLS:
+      ports:
+      - 443
+      - 8443
+  skip-domain:
+  - Mijia Cloud
+  - +.lan
+  - +.local
+  - +.apple.com
+proxies: []
+proxy-providers:
+  sub:
+    type: http
+    url: "URL_PLACEHOLDER" # <-- Ссылка на твоего провайдера !!!!
+    path: ./proxy_providers/sub.yaml
+    interval: 86400
+    health-check:
+      enable: true
+      url: http://cp.cloudflare.com/generate_204
+      interval: 300
+      timeout: 5000
+      lazy: true
+      
+listeners: # <-- Отдельный локальный прокси, для того чтобы торрент ходил мимо !!!! Нужно самостоятельно поставить в настройках 127.0.0.1:10808
+  - name: torrent-direct
+    type: socks
+    listen: 127.0.0.1
+    port: 10808
+    udp: true
+    proxy: DIRECT
+    
+proxy-groups:
+- name: PROXY
+  type: select
+  proxies:
+  - AUTO
+  use:
+  - sub
+- name: AUTO
+  type: url-test
+  use:
+  - sub
+  url: http://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
+  lazy: true
+rule-providers:
+  skrepysh-proxy:
+    type: http
+    url: https://raw.githubusercontent.com/Skrepysh/mihomo-rulesets/refs/heads/main/skrepysh-rulesets/skrepysh-proxy.yaml
+    path: ./rule-sets/skrepysh-proxy.yaml
+    interval: 86400
+    proxy: PROXY # То, через что будет скачиваться файл с 'правилами'
+    behavior: classical
+    format: yaml
+  ru-bundle:
+    type: http
+    url: https://raw.githubusercontent.com/legiz-ru/mihomo-rule-sets/main/ru-bundle/rule.yaml
+    path: ./rule-sets/ru-bundle.yaml
+    interval: 86400
+    proxy: PROXY
+    behavior: domain
+    format: yaml
+  torrent-clients:
+    type: http
+    url: https://raw.githubusercontent.com/legiz-ru/mihomo-rule-sets/refs/heads/main/other/torrent-clients.yaml
+    path: ./rule-sets/torrent-clients.yaml
+    interval: 86400
+    proxy: PROXY
+    behavior: classical
+    format: yaml
+  torrent-trackers:
+    type: http
+    url: https://raw.githubusercontent.com/legiz-ru/mihomo-rule-sets/main/other/torrent-trackers.mrs
+    path: ./rule-sets/torrent-trackers.mrs
+    interval: 86400
+    proxy: PROXY
+    behavior: domain
+    format: mrs
+  steam:
+    type: http
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.yaml
+    path: ./rule-sets/steam.yaml
+    interval: 86400
+    proxy: PROXY
+    behavior: classical
+    format: yaml
+rules: # Direct - идёт напрямую, Proxy - через впн
+- IP-CIDR,26.0.0.0/8,DIRECT # Radmin VPN
+- RULE-SET,torrent-clients,DIRECT
+- RULE-SET,torrent-trackers,DIRECT
+- RULE-SET,skrepysh-proxy,PROXY
+- RULE-SET,ru-bundle,PROXY
+
+- RULE-SET,steam,DIRECT # Всё это, стим
+- DOMAIN-SUFFIX,steamcontent.com,DIRECT
+- DOMAIN-SUFFIX,steamserver.net,DIRECT
+- DOMAIN-SUFFIX,steamstatic.com,DIRECT
+
+- DOMAIN,theboys.fun,DIRECT # Хуйня от меня, была проблема с сайтами
+- DOMAIN,rick-i-morty.net,DIRECT
+- DOMAIN-SUFFIX,rockstargames.com,PROXY
+- DOMAIN-SUFFIX,socialclub.rockstargames.com,PROXY
+- DOMAIN-SUFFIX,roblox.com,PROXY
+- DOMAIN-SUFFIX,rbxcdn.com,PROXY
+- DOMAIN-SUFFIX,rbxinfra.net,PROXY
+- DOMAIN-SUFFIX,rbxtrk.com,PROXY
+- DOMAIN-SUFFIX,funpay.com,DIRECT
+
+- MATCH,DIRECT # Весь твой интернет!
