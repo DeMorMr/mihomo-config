@@ -9,3 +9,5 @@ const main = (config) => {
   return config;
 };
 ```
+
+![Превью](./.github/assets/preview.gif)
