@@ -182,8 +182,6 @@ rules: # Direct - идёт напрямую, Proxy - через впн
 - IP-CIDR,26.0.0.0/8,DIRECT # Radmin VPN
 - RULE-SET,torrent-clients,DIRECT
 - RULE-SET,torrent-trackers,DIRECT
-- RULE-SET,skrepysh-proxy,PROXY
-- RULE-SET,ru-bundle,PROXY
 
 - RULE-SET,steam,DIRECT # Всё это, стим
 - DOMAIN-SUFFIX,steamcontent.com,DIRECT
@@ -205,6 +203,9 @@ rules: # Direct - идёт напрямую, Proxy - через впн
 - DOMAIN-SUFFIX,rbxinfra.net,PROXY
 - DOMAIN-SUFFIX,rbxtrk.com,PROXY
 - DOMAIN-SUFFIX,funpay.com,DIRECT
+
+- RULE-SET,skrepysh-proxy,PROXY
+- RULE-SET,ru-bundle,PROXY
 
 - GEOIP,RU,DIRECT
 - GEOIP,BY,DIRECT
