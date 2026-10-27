@@ -206,6 +206,8 @@ rules: # Direct - идёт напрямую, Proxy - через впн
 - DOMAIN-SUFFIX,rbxtrk.com,PROXY
 - DOMAIN-SUFFIX,funpay.com,DIRECT
 
-
+- GEOIP,RU,DIRECT
+- GEOIP,BY,DIRECT
+- GEOIP,KZ,DIRECT
 
 - MATCH,DIRECT # Весь твой интернет!
