@@ -184,6 +184,12 @@ rules: # Direct - идёт напрямую, Proxy - через впн
 - DOMAIN-SUFFIX,steamserver.net,DIRECT
 - DOMAIN-SUFFIX,steamstatic.com,DIRECT
 
+- DOMAIN-SUFFIX,cachyos.org,DIRECT
+- DOMAIN-SUFFIX,archlinux.org,DIRECT
+- DOMAIN-SUFFIX,pkgbuild.com,DIRECT
+- DOMAIN-KEYWORD,cachyos,DIRECT
+- DOMAIN-SUFFIX,kescher.at,DIRECT
+
 - DOMAIN,theboys.fun,DIRECT # Хуйня от меня, была проблема с сайтами
 - DOMAIN,rick-i-morty.net,DIRECT
 - DOMAIN-SUFFIX,rockstargames.com,PROXY
@@ -193,5 +199,9 @@ rules: # Direct - идёт напрямую, Proxy - через впн
 - DOMAIN-SUFFIX,rbxinfra.net,PROXY
 - DOMAIN-SUFFIX,rbxtrk.com,PROXY
 - DOMAIN-SUFFIX,funpay.com,DIRECT
+
+- GEOIP,RU,DIRECT
+- GEOIP,BY,DIRECT
+- GEOIP,KZ,DIRECT
 
 - MATCH,DIRECT # Весь твой интернет!
