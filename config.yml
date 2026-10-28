@@ -207,8 +207,8 @@ rules: # Direct - идёт напрямую, Proxy - через впн
 - RULE-SET,skrepysh-proxy,PROXY
 - RULE-SET,ru-bundle,PROXY
 
-- GEOIP,RU,DIRECT
-- GEOIP,BY,DIRECT
-- GEOIP,KZ,DIRECT
+#- GEOIP,RU,DIRECT
+#- GEOIP,BY,DIRECT
+#- GEOIP,KZ,DIRECT
 
 - MATCH,DIRECT # Весь твой интернет!
