@@ -170,6 +170,14 @@ rule-providers:
     proxy: PROXY
     behavior: domain
     format: mrs
+  discord-list:
+    type: http
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/discord.mrs
+    path: ./rule-sets/discord_domains.mrs
+    interval: 86400
+    proxy: PROXY
+    behavior: domain
+    format: mrs
   steam:
     type: http
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.yaml
@@ -206,9 +214,10 @@ rules: # Direct - идёт напрямую, Proxy - через впн
 
 - RULE-SET,skrepysh-proxy,PROXY
 - RULE-SET,ru-bundle,PROXY
+- RULE-SET,discord-list,PROXY
 
-#- GEOIP,RU,DIRECT
-#- GEOIP,BY,DIRECT
-#- GEOIP,KZ,DIRECT
+- GEOIP,RU,DIRECT
+- GEOIP,BY,DIRECT
+- GEOIP,KZ,DIRECT
 
 - MATCH,DIRECT # Весь твой интернет!
