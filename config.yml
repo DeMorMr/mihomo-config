@@ -192,6 +192,15 @@ rules: # Direct - идёт напрямую, Proxy - через впн
 - RULE-SET,torrent-clients,DIRECT
 - RULE-SET,torrent-trackers,DIRECT
 
+
+- PROCESS-NAME,Discord.exe,PROXY
+- PROCESS-NAME,DiscordPTB.exe,PROXY
+- PROCESS-NAME,DiscordCanary.exe,PROXY
+- PROCESS-NAME,Update.exe,PROXY
+- RULE-SET,discord-list,PROXY
+- IP-CIDR,66.22.192.0/18,PROXY,no-resolve
+- IP-CIDR,35.0.0.0/8,PROXY,no-resolve
+
 - RULE-SET,skrepysh-proxy,PROXY
 - RULE-SET,ru-bundle,PROXY
 - RULE-SET,discord-list,PROXY
