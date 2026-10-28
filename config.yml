@@ -191,6 +191,10 @@ rules: # Direct - идёт напрямую, Proxy - через впн
 - RULE-SET,torrent-clients,DIRECT
 - RULE-SET,torrent-trackers,DIRECT
 
+- RULE-SET,skrepysh-proxy,PROXY
+- RULE-SET,ru-bundle,PROXY
+- RULE-SET,discord-list,PROXY
+
 - RULE-SET,steam,DIRECT # Всё это, стим
 - DOMAIN-SUFFIX,steamcontent.com,DIRECT
 - DOMAIN-SUFFIX,steamserver.net,DIRECT
@@ -212,9 +216,7 @@ rules: # Direct - идёт напрямую, Proxy - через впн
 - DOMAIN-SUFFIX,rbxtrk.com,PROXY
 - DOMAIN-SUFFIX,funpay.com,DIRECT
 
-- RULE-SET,skrepysh-proxy,PROXY
-- RULE-SET,ru-bundle,PROXY
-- RULE-SET,discord-list,PROXY
+
 
 - GEOIP,RU,DIRECT
 - GEOIP,BY,DIRECT
