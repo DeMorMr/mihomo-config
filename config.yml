@@ -13,7 +13,7 @@ profile:
   store-fake-ip: false
 tun:
   enable: true
-  stack: gvisor #system
+  stack: mixed #gvisor #system
   auto-route: true
   auto-detect-interface: true
   strict-route: true
