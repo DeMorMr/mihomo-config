@@ -206,6 +206,9 @@ rules: # Direct - идёт напрямую, Proxy - через впн
 - RULE-SET,discord-list,PROXY
 
 - RULE-SET,steam,DIRECT # Всё это, стим
+- PROCESS-NAME,steam.exe,DIRECT
+- PROCESS-NAME,steam,DIRECT
+- PROCESS-NAME,steamwebhelper,DIRECT
 - DOMAIN-SUFFIX,steamcontent.com,DIRECT
 - DOMAIN-SUFFIX,steamserver.net,DIRECT
 - DOMAIN-SUFFIX,steamstatic.com,DIRECT
