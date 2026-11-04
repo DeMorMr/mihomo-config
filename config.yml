@@ -219,6 +219,9 @@ rules: # Direct - идёт напрямую, Proxy - через впн
 - DOMAIN-KEYWORD,cachyos,DIRECT
 - DOMAIN-SUFFIX,kescher.at,DIRECT
 
+- DOMAIN-SUFFIX,gvt1.com,PROXY
+- DOMAIN,play.googleapis.com,PROXY
+
 - DOMAIN,theboys.fun,DIRECT # Хуйня от меня, была проблема с сайтами
 - DOMAIN,rick-i-morty.net,DIRECT
 - DOMAIN-SUFFIX,rockstargames.com,PROXY
