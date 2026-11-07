@@ -232,16 +232,16 @@ rules: # Direct - идёт напрямую, Proxy - через впн
 - DOMAIN-SUFFIX,rbxtrk.com,PROXY
 - DOMAIN-SUFFIX,funpay.com,DIRECT
 
-- DOMAIN-SUFFIX,vrchat.com,Proxy
-- DOMAIN-SUFFIX,vrchat.cloud,Proxy
-- DOMAIN-SUFFIX,api.vrchat.cloud,Proxy
+- DOMAIN-SUFFIX,vrchat.com,PROXY
+- DOMAIN-SUFFIX,vrchat.cloud,PROXY
+- DOMAIN-SUFFIX,api.vrchat.cloud,PROXY
 # Серверы аватаров, миров и медиаконтента (Cloudflare/AWS)
-- DOMAIN-KEYWORD,vrchat,Proxy
-- DOMAIN-SUFFIX,cloudfront.net,Proxy
+- DOMAIN-KEYWORD,vrchat,PROXY
+- DOMAIN-SUFFIX,cloudfront.net,PROXY
 # Игровые голосовые серверы (VRChat использует Photon и Vivox)
-- DOMAIN-SUFFIX,vivox.com,Proxy
-- DOMAIN-SUFFIX,photonengine.com,Proxy
-- DOMAIN-SUFFIX,photonengine.io,Proxy
+- DOMAIN-SUFFIX,vivox.com,PROXY
+- DOMAIN-SUFFIX,photonengine.com,PROXY
+- DOMAIN-SUFFIX,photonengine.io,PROXY
 
 - GEOIP,RU,DIRECT
 - GEOIP,BY,DIRECT
